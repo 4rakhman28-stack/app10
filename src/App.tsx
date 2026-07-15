@@ -1,6 +1,7 @@
 import { useState, type ReactNode } from 'react'
 import { useAppState } from './hooks/useAppState'
 import { BottomNav } from './components/BottomNav'
+import { InstallBanner } from './components/InstallBanner'
 import { HomePage } from './pages/HomePage'
 import { NutritionPage } from './pages/NutritionPage'
 import { ProgressPage } from './pages/ProgressPage'
@@ -27,7 +28,9 @@ function App() {
         <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-accent/8 rounded-full blur-3xl" />
       </div>
 
-      <main className="px-5 pt-6 pb-28">
+      <InstallBanner />
+
+      <main className="px-5 pt-2 pb-28">
         {pages[tab]}
       </main>
 
