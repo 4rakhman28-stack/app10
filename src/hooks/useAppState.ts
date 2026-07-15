@@ -49,7 +49,12 @@ const defaultState: AppState = {
 function loadState(): AppState {
   try {
     const saved = localStorage.getItem(STORAGE_KEY)
-    if (saved) return JSON.parse(saved)
+    if (saved) {
+      const parsed = JSON.parse(saved) as Partial<AppState>
+      if (parsed.profile && Array.isArray(parsed.meals) && Array.isArray(parsed.workouts)) {
+        return { ...defaultState, ...parsed, profile: { ...defaultProfile, ...parsed.profile } }
+      }
+    }
   } catch {
     /* use defaults */
   }
